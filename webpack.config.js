@@ -1,4 +1,8 @@
-//根据环境变量判断要加载的webpack配置，默认为开发环境
+/**
+ * @author: @AngularClass
+ */
+
+// Look in ./config folder for webpack.dev.js
 switch (process.env.NODE_ENV) {
     case 'prod':
     case 'production':

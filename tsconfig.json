@@ -1,18 +1,19 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "target": "es5",
-    "outDir": "dist",
-    "rootDir": ".",
-    "sourceMap": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node"
+    "sourceMap": true,
+    "noEmitHelpers": false
   },
   "exclude": [
     "node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
+    "compiler": "typescript",
+    "forkChecker": true,
     "useWebpackText": true
   },
   "compileOnSave": false,

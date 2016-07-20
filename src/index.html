@@ -3,16 +3,18 @@
 <head>
     <meta charset=UTF-8>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= webpackConfig.metadata.title %></title>
-
-    <meta name="description" content="<%= webpackConfig.metadata.title %>">
-
-    <!-- base url -->
-    <base href="<%= webpackConfig.metadata.baseUrl %>">
+    <title>Angular2 Seed</title>
+    <base href="/">
 </head>
 <body>
 
-<div id="app"></div>
+<app>
+    Loading...
+</app>
+
+<script src="/polyfills.bundle.js"></script>
+<script src="/vendor.bundle.js"></script>
+<script src="/main.bundle.js"></script>
 
 </body>
 </html>

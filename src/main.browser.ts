@@ -1,2 +1,7 @@
-let app=document.getElementById("app");
-app.innerHTML="abcde";
+/*
+ * Providers provided by Angular
+ */
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { App } from './app/app';
+
+bootstrap(App);

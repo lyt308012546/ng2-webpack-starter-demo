@@ -29,7 +29,7 @@
   "scripts": {
     "start": "npm run server:dev",
     "server": "npm run server:dev",
-    "server:dev": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
+    "server:dev": "webpack-dev-server --content-base src/",
     "lint": "tslint \"src/**/*.ts\" --force",
     "postinstall": "npm run typings -- install"
   },
