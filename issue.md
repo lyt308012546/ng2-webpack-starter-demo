@@ -150,4 +150,44 @@ cat typings/index.d.ts
 * "exclude"列表中的文件引用列表外的文件，。
 * tsconfig.json可以是个空文件，那么编译器则使用默认编译选项，编译当前目录及其子目录下的所有文件。
 * 命令行上提供的编译选项会覆盖tsconfig.json文件中的对应选项。
-```
+
+## webstorm
+
+#### webstorm无法引用到typings,导致报错的解决方案
+
+不要把typings文件夹设置成排除在项目之外，负责webstorm会找不到typings文件夹，就会报错，虽然代码执行webpack不会保存，webstorm中始终有
+红色的错误横线，很容易无法判断是否是真是的错误信息。
+
+#### 如何设置webstorm使用项目根目录的检测配置tslint.json进行检测
+
+* file->seting->Languages&Frameworks->TypeScript->TSLint
+* 设置启用
+* 选择NODE目录
+* 现在TSLint的模块目录
+* 设置config目录
+* 点击应用完成即可
+
+
+#### webstorm中@Component下包含directives报错的问题解决方案
+
+官方的意思好像只能升级webstorm，没办法只好重新下载了一个最新版的。
+[官方的回答](https://youtrack.jetbrains.com/issue/WEB-22139#u=1466666851956&tab=Comments)
+
+
+#### webpack编译报错：Duplicate identifier 'Promise'
+
+不要同时引用core-js和es6-promise，这样会导致冲突，因为core-js中包含有promise的定义。
+`修复问题时，请注意删除dist目录下的内容，防止有缓存。`
+
+
+#### Code Style 统一
+
+
+|-- Spaces
+|--|-- Within
+|--|--|-- ES3 import/export braces Y
+|--|-- Other
+|--|--|-- after type reference colon ':' Y
+|-- Wrapping and Braces
+|--|--Comment at first column N
+|--|--Comment at first column N

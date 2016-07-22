@@ -13,6 +13,7 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
+    "@angular/router": "^3.0.0-beta.2",
     "angular2-template-loader": "^0.4.0",
     "awesome-typescript-loader": "^1.1.1",
     "codelyzer": "^0.0.25",

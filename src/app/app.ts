@@ -1,43 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
 import { Detail } from './detail';
-
- const HEROES: Hero[] = [
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' },
-    { id: 17, name: 'Dynama' },
-    { id: 18, name: 'Dr IQ' },
-    { id: 19, name: 'Magma' },
-    { id: 20, name: 'Tornado' }
-];
+import { HeroService } from './service';
 
 @Component({
     selector: 'app',
     template: `
-    <h1>{{title}}</h1>
+    <h1>11111{{ENV}}</h1>
     <ul>
-        <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+        <li *ngFor="let hero of heroes"
+            [class.selected]="hero === selectedHero"
+            (click)="onSelect(hero)">
             <span>{{hero.name}}</span>
         </li>
     </ul>
     <my-hero-detail [hero]="selectedHero"></my-hero-detail>
     `,
+    providers: [HeroService],
     directives: [Detail]
 })
-export class App {
-    title = 'Tour of Heroes';
-    heroes = HEROES;
+export class App implements OnInit {
     selectedHero: Hero;
-    onSelect(hero: Hero) { this.selectedHero = hero; }
+    heroes: Hero[];
+    title = 'Tour of Heroes';
+
+    constructor(private heroService: HeroService) {
+    };
+
+    ngOnInit() {
+        this.getHeroes();
+    };
+
+    onSelect(hero: Hero) {
+        this.selectedHero = hero;
+    };
+
+    getHeroes() {
+        this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
+    };
 }
-
-
-/*
- Copyright 2016 Google Inc. All Rights Reserved.
- Use of this source code is governed by an MIT-style license that
- can be found in the LICENSE file at http://angular.io/license
- */

@@ -109,9 +109,6 @@ module.exports = webpackMerge(commonConfig, {
      * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
      */
         //用于设置全局变量设置，需要添加.d.ts，用于识别全局变量设置
-        // 如果是存字符串记得用JSON.stringify()进行转换，否则会出错，
-        // 例如 TEST="测试" 在main.ts 写如console.log(TEST),经过webpack编译会编程 console.log((测试))，
-        // 这里没有引号，所以会保存找不到 测试 这个关键字
         // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
         new DefinePlugin({
             'ENV': JSON.stringify(METADATA.ENV),
