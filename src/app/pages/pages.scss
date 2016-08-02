@@ -1,0 +1,11 @@
+@import '../theme/sass/conf/conf';
+
+.page-root {
+  top: $tool-height;
+  left: $slider-width;
+  right: 0px;
+  bottom: 0px;
+  z-index: 904;
+  display: block;
+  position: fixed;
+}

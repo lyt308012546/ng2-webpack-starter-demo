@@ -1,0 +1,21 @@
+.mui-textfield > input:focus, .mui-textfield > textarea:focus {
+  border-color: $primary;
+}
+
+.mui-textfield > input:focus ~ label, .mui-textfield > textarea:focus ~ label {
+  color: $primary;
+}
+
+.mui-textfield--float-label > label {
+  color: $desc-text-color;
+}
+
+.mui-textfield > input, .mui-textfield > textarea {
+  color: $default-text-color;
+  border-bottom: 1px solid $desc-text-color;
+}
+
+.mui-textfield--float-label > input:not(:focus).mui--is-not-empty ~ label, .mui-textfield--float-label > input:not(:focus)[value]:not([value=""]):not(.mui--is-empty):not(.mui--is-not-empty) ~ label, .mui-textfield--float-label > input:not(:focus):not(:empty):not(.mui--is-empty):not(.mui--is-not-empty) ~ label, .mui-textfield--float-label > textarea:not(:focus).mui--is-not-empty ~ label, .mui-textfield--float-label > textarea:not(:focus)[value]:not([value=""]):not(.mui--is-empty):not(.mui--is-not-empty) ~ label, .mui-textfield--float-label > textarea:not(:focus):not(:empty):not(.mui--is-empty):not(.mui--is-not-empty) ~ label {
+  color: $desc-text-color;
+}
+

@@ -1,0 +1,31 @@
+<div class="header">
+  <H1>Contract System</H1>
+</div>
+<div class="login">
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <div class="mui-textfield mui-textfield--float-label">
+      <input type="text" maxlength="12" required
+             [(ngModel)]="model.name"
+             (ngModelChange)="loginErrorMsg=''"
+             name="name"
+             #name="ngModel">
+      <label>Username</label>
+      <span [hidden]="name.valid || name.untouched " class="error">{{userNameEmpty}}</span>
+    </div>
+    <div class="mui-textfield mui-textfield--float-label">
+      <input type="password" maxlength="12" required
+             [(ngModel)]="model.password"
+             (ngModelChange)="loginErrorMsg=''"
+             name="password"
+             #password="ngModel">
+      <label>Password</label>
+      <span [hidden]="password.valid || password.untouched " class="error">{{userPasswordEmpty}}</span>
+    </div>
+
+    <button type="submit" class="mui-btn mui-btn--primary" [disabled]="!heroForm.form.valid">Login</button>
+    <div [hidden]="loginErrorMsg==''" class="error">{{loginErrorMsg}}</div>
+  </form>
+</div>
+<div class="footer">
+  <label>鸣博电子科技（上海）有限公司</label>
+</div>

@@ -3,7 +3,8 @@
   "dependencies": {},
   "globalDependencies": {
     "core-js": "registry:dt/core-js#0.0.0+20160602141332",
-    "es6-promise": "registry:dt/es6-promise#0.0.0+20160614011821",
-    "node": "registry:dt/node#6.0.0+20160621231320"
+    "node": "registry:dt/node#6.0.0+20160621231320",
+    "rx.lite": "registry:dt/rx.lite#0.0.0+20160316155526",
+    "rxjs-symbol-typings": "registry:lib/rxjs-symbol-typings#1.0.0+20160329204237"
   }
 }

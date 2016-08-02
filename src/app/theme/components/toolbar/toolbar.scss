@@ -1,0 +1,12 @@
+@import '../../sass/conf/conf';
+
+.toolbar{
+  height: $tool-height;
+  top: 0;
+  left: $slider-width;
+  right: 0;
+  z-index: 904;
+  display: block;
+  background-color: #282828;
+  position: fixed;
+}
