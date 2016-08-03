@@ -1,7 +1,9 @@
-/*
- * Providers provided by Angular
- */
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { App } from './app/app';
 
-bootstrap(App);
+import { bootstrap } from '@angular/platform-browser-dynamic';
+
+import { AppComponent,TRANSLATE_PROVIDERS } from './app/translate'
+
+
+bootstrap(AppComponent, [
+    ...TRANSLATE_PROVIDERS
+]);

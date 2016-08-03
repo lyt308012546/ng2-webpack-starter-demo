@@ -38,12 +38,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 根据配置生成HTML元素
 const HtmlElementsPlugin = require('./html-elements-plugin');
 // 头部元素配置
-const headConfig=require('./head-config.common');
+const headConfig = require('./head-config.common');
 
 // 编译TypeScript的插件 ForkCheckerPlugin是用于异步检测代码的一个插件，提高webpack加载的效率
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
-
+// 单独输出文件工具
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 /*
  * Webpack Constants
  * Webpack 常量信息
@@ -104,7 +105,7 @@ module.exports = {
          * 解析模块的拓展名的数组
          * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
          */
-        extensions: ['', '.ts', '.js', '.json'],
+        extensions: ['', '.ts', '.js', '.css', '.scss'],
 
         // Make sure root is src
         // 查找文件根目录
@@ -195,9 +196,18 @@ module.exports = {
              */
             {
                 test: /\.css$/,
-                loaders: ['to-string-loader', 'css-loader']
+                loaders: ['raw-loader']
             },
 
+            {
+                test: /\.scss$/,
+                loaders: ['raw-loader', 'sass-loader']
+            },
+
+            {
+                test: /initial\.scss$/,
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+            },
             /* Raw loader support for *.html
              * Returns file content as string
              *
@@ -207,8 +217,20 @@ module.exports = {
                 test: /\.html$/,
                 loader: 'raw-loader',
                 exclude: [helpers.root('src/index.html')]
-            }
+            },
 
+            {
+                test: /\.woff(2)?(\?v=.+)?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+            },
+
+            {
+                test: /\.(ttf|eot|svg)(\?v=.+)?$/, loader: 'file-loader'
+            },
+
+            {
+                test: /bootstrap\/dist\/js\/umd\//,
+                loader: 'imports?jQuery=jquery'
+            }
         ]
 
     },
@@ -219,6 +241,10 @@ module.exports = {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+
+        new ExtractTextPlugin('initial.css', {
+            allChunks: true
+        }),
 
         /*
          * Plugin: ForkCheckerPlugin
@@ -246,8 +272,12 @@ module.exports = {
          * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
          * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
          */
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: ['polyfills', 'vendor'].reverse()
+        // }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['polyfills', 'vendor'].reverse()
+            name: ['main', 'vendor', 'polyfills'],
+            minChunks: Infinity
         }),
 
         /*
@@ -301,6 +331,12 @@ module.exports = {
         new HtmlElementsPlugin({
             headTags: headConfig
         }),
+
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery'
+        })
 
     ],
 

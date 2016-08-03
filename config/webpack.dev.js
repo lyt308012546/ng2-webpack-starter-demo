@@ -17,7 +17,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig.metadata, {
     host: 'localhost',
-    port: 3000,
+    port: 5000,
     ENV: ENV,
     HMR: HMR
 });
@@ -99,15 +99,15 @@ module.exports = webpackMerge(commonConfig, {
 
     plugins: [
 
-    /**
-     * Plugin: DefinePlugin
-     * Description: Define free variables.
-     * Useful for having development builds with debug logging or adding global constants.
-     *
-     * Environment helpers
-     *
-     * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-     */
+        /**
+         * Plugin: DefinePlugin
+         * Description: Define free variables.
+         * Useful for having development builds with debug logging or adding global constants.
+         *
+         * Environment helpers
+         *
+         * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+         */
         //用于设置全局变量设置，需要添加.d.ts，用于识别全局变量设置
         // 如果是存字符串记得用JSON.stringify()进行转换，否则会出错，
         // 例如 TEST="测试" 在main.ts 写如console.log(TEST),经过webpack编译会编程 console.log((测试))，
